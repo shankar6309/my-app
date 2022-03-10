@@ -34,9 +34,15 @@
 		<dependency>
 		    <groupId>org.apache.poi</groupId>
 		    <artifactId>poi-ooxml</artifactId>
-		    <version>5.2.0</version>
-		</dependency>
-	</dependencies>
+                    <groupId>org.apache.poi</groupId>
+                    <artifactId>poi</artifactId>
+                 <version>5.2.0</version>
+             </dependency>
+           <dependency>
+          <groupId>org.apache.poi</groupId>
+           <artifactId>poi-ooxml</artifactId>
+            <version>5.2.0</version>
+          </dependency>
 	<properties>
    		<maven.compiler.source>6</maven.compiler.source>
    		<maven.compiler.target>1.6</maven.compiler.target>
