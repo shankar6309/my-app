@@ -7,8 +7,8 @@ pipeline {
   options {
     buildDiscarder logRotator (daysToKeepStr: '10', numToKeepStr: '7')
   }
-  stages
-   stage('Git Clone'){
+  stages{
+      stage('Git Clone'){
   parameters {
     choice choices: ['develop', 'qa', 'master'], description: 'Choose the branch to build', name: 'branchName'
   }
