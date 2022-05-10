@@ -9,11 +9,11 @@ pipeline {
   }
   stages{
       stage('Git Clone'){
+        steps{
   parameters {
     choice choices: ['develop', 'qa', 'master'], description: 'Choose the branch to build', name: 'branchName'
   }
-  steps{
-        git branch: 'develop',credentialId: 'github', url:'https://github.com/shankar6309/my-app'
+   git branch: 'develop',credentialId: 'github', url:'https://github.com/shankar6309/my-app'
       }
   }
     stages {
