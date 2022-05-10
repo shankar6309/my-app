@@ -12,7 +12,7 @@ pipeline {
   }
   stage('Git Clone'){
     steps{
-      gitbranch:'develop',credentialId:'github',url:'https://github.com/shankar6309/my-app'
+      gitbranch:'develop',credentialId:'github', url:'https://github.com/shankar6309/my-app'
       }
   }
     stages {
