@@ -5,7 +5,7 @@ pipeline {
     maven 'maven3'
   }
   options {
-    buildDiscarder logRotator(daysToKeepStr: '10', numToKeepStr: '7')
+    buildDiscarder(daysToKeepStr: '10', numToKeepStr: '7')
   }
   parameters {
     choice choices: ['develop', 'qa', 'master'], description: 'Choose the branch to build', name: 'branchName'
@@ -18,8 +18,13 @@ pipeline {
     }
     stage('Deploy to Tomcat') {
       steps {
-        tomcatDeploy(["172.31.13.38","172.31.13.38","172.31.13.38"],"ec2-user","tomcat-dev")
-      }
+        sshagent (['tomcat-dev']){
+          //copy war file to tomcat server
+          sh"scp -ostrictHostkeychecking=notarget/*.war ec2-user@172.31.13.234:opt/tomcat8/webapps/app.war"
+          sh"scp ec2-user@172.31.13.234 /opt/tomcat8/bin/shutdown.sh"
+          sh"scp ec2-user@172.31.13.234 /opt/tomcat8/bin/startup.sh"
+          }
+       }
     }
   }
   post {
