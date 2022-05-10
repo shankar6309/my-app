@@ -7,11 +7,12 @@ pipeline {
   options {
     buildDiscarder logRotator (daysToKeepStr: '10', numToKeepStr: '7')
   }
+  stages
+   stage('Git Clone'){
   parameters {
     choice choices: ['develop', 'qa', 'master'], description: 'Choose the branch to build', name: 'branchName'
   }
-  stage('Git Clone'){
-    steps{
+  steps{
         git branch: 'develop',credentialId: 'github', url:'https://github.com/shankar6309/my-app'
       }
   }
