@@ -5,7 +5,7 @@ pipeline {
     maven 'maven3'
   }
   options {
-    buildDiscarder(daysToKeepStr: '10', numToKeepStr: '7')
+    buildDiscarder (daysToKeepStr: '10', numToKeepStr: '7')
   }
   parameters {
     choice choices: ['develop', 'qa', 'master'], description: 'Choose the branch to build', name: 'branchName'
